@@ -1,11 +1,12 @@
-def get_data(path):
+def get_data(filepath):
     """Read the file and return a list of lists of integers."""
-    with open(path) as p:
+    with open(filepath) as x:
         num = []
-        for lines in p:
-            lines = lines.split()
-            lines = list(map(int, lines))
-            num.append(lines)
+        for line in x:
+            if line:
+                line = line.split()
+                line = [int(i) for i in line]
+                num.append(line)
     return num
 
 
