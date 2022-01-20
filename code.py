@@ -1,4 +1,4 @@
-def get_data(filepath):
+def get_data(filepath: str) -> list:
     """Read the file and return a list of lists of integers."""
     with open(filepath) as x:
         num = []
@@ -10,7 +10,7 @@ def get_data(filepath):
     return num
 
 
-def analyze_data(int_list, option):
+def analyze_data(int_list: list, option: str) -> float | int:
     """Do the math work indicated by the option on a list of lists of integers."""
     if option == "average":
         num = 0
@@ -19,8 +19,8 @@ def analyze_data(int_list, option):
             length = length + len(int_list[i])
             for numbers in int_list[i]:
                 num = num + numbers
-        print(round(num / length, 1))
-    if option == "standard deviation":
+        return(round(num / length, 1))
+    elif option == "standard deviation":
         num = 0
         length = 0
         for i in range(0, len(int_list)):
@@ -32,8 +32,8 @@ def analyze_data(int_list, option):
         for i in range(0, len(int_list)):
             for numbers in int_list[i]:
                 squared_diff = squared_diff + (numbers - average) ** 2
-        print(round((squared_diff / length) ** 0.5, 1))
-    if option == "covariance":
+        return(round((squared_diff / length) ** 0.5, 1))
+    elif option == "covariance":
         list1 = int_list[0]
         list2 = int_list[1]
         sum1 = 0
@@ -47,8 +47,8 @@ def analyze_data(int_list, option):
         numerator = 0
         for i in range(0, len(list1)):
             numerator = numerator + (list1[i] - mean1) * (list2[i] - mean2)
-        print(int(numerator / (len(list1))))
-    if option == "correlation":
+        return(int(numerator / (len(list1))))
+    elif option == "correlation":
         list1 = int_list[0]
         list2 = int_list[1]
         sum1 = 0
@@ -66,4 +66,4 @@ def analyze_data(int_list, option):
             numerator = numerator + (list1[i] - mean1) * (list2[i] - mean2)
             squared_diff1 = squared_diff1 + (list1[i] - mean1) ** 2
             squared_diff2 = squared_diff2 + (list2[i] - mean2) ** 2
-        print(round(numerator / (squared_diff1 * squared_diff2) ** 0.5, 3))
+        return(round(numerator / (squared_diff1 * squared_diff2) ** 0.5, 3))
