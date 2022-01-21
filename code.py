@@ -10,7 +10,7 @@ def get_data(filepath: str) -> list:
     return num
 
 
-def analyze_data(int_list: list, option: str) -> float | int:
+def analyze_data(int_list: list[int], option: str) -> float | int:
     """Do the math work indicated by the option on a list of lists of integers."""
     if option == "average":
         num = 0
